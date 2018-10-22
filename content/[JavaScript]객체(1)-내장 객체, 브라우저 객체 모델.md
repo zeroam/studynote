@@ -1,0 +1,217 @@
+## 자바스크립트는 객체 기반 언어
+- 객체.메서드();
+  - 객체의 메서드 실행
+- 객체.속성;
+  - 객체의 속성값 가져옴
+- 객체.속성=값;
+  - 객체의 속성값을 바꿈
+
+<br/>
+
+## 객체의 종류
+- 내장 객체
+  - 자바스크립트 엔진에 내장되어 있어, 필요한 경우 생성해 사용할 수 있음
+  - 문자(String), 날짜(Date), 배열(Array), 수학(Math) 객체
+- 브라우저 객체 모델(BOM, Browser Object Model)
+  - 브라우저에 계층적으로 내장되어 있는 객체들
+- window(브라우저)
+  - document와 location 객체의 상위 객체
+- screen, location(주소창), history, navigator, document(문서 영역)
+  - 현재 열린 사이트에서 다른 사이트로 이동시키려면 location 객체에 참조주소(href) 속성을 바꾸면 됨
+    - (window.)location.href = "사이트 URL"
+- 문서 객체 모델(DOM, Document Object Model)
+  - HTML 문서 구조
+  - 제이쿼리 문서 객체 모델을 많이 사용
+
+<br/>
+
+## 내장 객체
+- 내장 객체 생성
+  - 참조 변수(인스턴스 네임) = new 생성 함수()
+- ### 날짜 정보 객체
+  - 현재 날짜 : var t = new Date()
+  - 특정 날짜
+    - var t = new Date("년/월/일")
+    - var t = new Date("년,월,일")
+  - 날짜 관련 메서드
+    - 날짜 정보를 가져올 떄(get)
+    - 날짜 정보를 수정할 때(set)
+    - <>FullYear(), <>Month(), <>Date(), <>Day(), <>Hours(), <>Minutes(), <>Seconds(), <>Time()
+- ### 숫자 객체
+  - var 참조변수 = new Number(값); 또는 var 참조변수 = 값;
+  - Number 객체의 속성
+    - MAX_VALUE, MIN_VALUE, NaN
+  - Number 객체의 메서드
+    - toString() : 문자형 데이터로 반환
+    - valueOf() : 객체의 원래 값을 반환
+    - parseInt(값) : 데이터를 정수로 변환하여 반환
+    - parseFloat(값): 데이터를 실수로 변환하여 반환
+    - 수학 객체(Math Object)
+    - 메서드 및 상수
+    - Math.abs(숫자) : 절댓값 반환
+    - Math.max(숫자1, 숫자2, ...) : 가장 큰 값 반환
+    - Math.min(...)
+    - Math.pow(숫자, 제곱값) : 숫자의 거듭제곱 값 반환
+    - Math.random() : 0~1사이의 난수를 반환
+    - Math.round(숫자) : 소수점 첫째 자리에서 반올림하여 정수 반환
+    - Math.ceil(숫자) : 올림
+    - Math.floor(숫자) : 내림
+    - Math.sqrt(숫자) : 제곱근 값 반환
+    - Math.PI : 원주율 상수를 반환
+  - 난수를 발생시켜 원하는 구간 정수의 값 구하기
+    - Math.floor(Math.random()*(최대값 - 최소값 + 1) + 최소값;
+- ### 배열 객체(Array Object)
+  - 여러개의 데이터를 하나의 장소에 저장
+  -기본형
+    - var 참조변수 = new Array(); 참조변수[0] = 값1, 참조변수[1] = 값2, ...
+    - var 참조변수 = new Array(값1, 값2, ...);
+    - var 참조변수 = [값1, 값2, ... ]
+  - 저장된 객체 불러오기
+    - 참조변수[인덱스번호];
+    - for(var i=0; i<d.length; i++) { d[i] };
+    - for(i in d) { d[i] };
+  - 배열 객체의 메서드 및 속성
+    - join(연결 문자) : 연결 문자 기준으로 1개의 문자형 데이터로 반환
+    - reverse() : 데이터 순서를 거꾸로 바꾼 후 반환
+    - sort() : 오름차순으로 정렬
+    - slice(start, end) : 원하는 인덱스 구간만큼 잘라서 배열 객체로 가져옴
+    - splice(start, count, value1, value2, ...) : 배열 객체에 지정 데이터를 삭제하고 그 구간에 새 데이터를 삽입할 수 있음
+    - concat() : 2개의 배열 객체를 하나로 결합시킴
+    - pop() :  마지막 인덱스에 저장된 데이터를 삭제
+    - shift() : 첫번째 인덱스에 저장된 데이터를 삭제
+    - unshift(newdata): 가장 앞의 인덱스에 새 데이터를 삽입
+    - length : 데이터 개수 반환
+- ### 문자 객체(String Object)
+  - 문자 객체 생성법
+    - var 참조변수 = new String(문자형데이터);
+    - var 참조변수 = 문자형데이터;
+  - 문자 객체 메서드 및 속성
+    - charAt(index) : 문자열에서 인덱스에 해당하는 문자를 반환
+    - indexOf("찾을문자") : 왼쪽부터 최초로 일치하는 문자의 인덱스 번호를 반환, 없으면 -1
+    - lastIndexOf("찾을문자"): 오른쪽부터
+    - match("찾을문자"): 왼쪽부터 최초로 찾은 문자 반환, 없으면 null 반환
+    - replace("바꿀문자", "새문자") : 왼쪽부터 최초로 찾은 문자를 새문자로 치환
+    - search("찾을 문자") : 왼쪽부터 찾을문자와 일치하는 문자를 찾아 최초로 일치하는 인덱스 번호를 반환
+    - slice(start, end) : start~end 문자를 자른 후 반환, start는 추출 시작점(end가 없을 경우 끝까지)
+    - substring(start, end) : slice와 비슷, 차이점 있음
+    - substr(start, count) : start 부터 count 만큼 문자열 반환
+    - split("문자") : 지정한 문자를 기준으로 데이터를 나누어 배열에 저장하여 반환
+    - toLowerCase() : 대문자를 모두 소문자로
+    - toUpperCase() : 소문자를 대문자로
+    - length : 문자의 개수 반환
+concat("새로운문자") : 새로운 문자열 결합
+  - trim() : 문자의 앞 또는 뒤에 공백 문자열을 삭제
+  - replace를 replaceAll 처럼 사용하기 - 자바스크립트에는 없기 떄문
+    - // #를 감싼 따옴표를 슬래시로 대체하고 뒤에 gi 를 붙이면
+    - // replaceAll 과 같은 결과를 볼 수 있다.
+    - str.replace(/#/gi, "");
+    - g : 발생할 모든 pattern에 대한 전역 검색
+    - i : 대/소문자 구분 안함
+    - m: 여러 줄 검색 (참고)
+- ### 정규 표현 객체(RegExp)
+  - 입력 요소에 데이터를 규칙에 맞게 작성했는지 판단해서 알려주는 객체
+  - 기본형
+    - var 참조변수 = new RegExp(패턴, 검색옵션)
+    - var 참조변수 = /패턴/검색옵션
+  - 검색 옵션
+    - * : 0회 이상 일치하는 문자 검사
+    - + : 1회 이상 일치하는 문자 검사
+    - i : 영문일 경우 대.소문자 구분하지 않음
+    - ? : 0회 또는 1회, 규칙에 맞는 문자가 있는지 검사
+    - g : 규칙에 맞는 모든 문자 찾음
+    - m : 행이 바뀌어도 규칙에 맞는 문자를 찾음
+    - $ : 문자열 끝부분에 있는 문자를 찾음
+    - ^ : 문자열 앞에서부터 규칙에 일치하는 문자를 찾음
+    - \d : 숫자 하나를 찾음
+    - \D : 숫자가 아닌 문자 하나를 찾음
+    - \s : 공백문자(스페이스)를 찾음
+    - [0-9][A-Z][a-z] : 숫자,대.소문자 영문을 찾음
+    - \w : 알파벳, 숫자, 밑줄(_) 기호를 찾음
+    - \W : 알파벳, 숫자, 밑줄(_)을 제외한 문자를 찾음
+    - a|b : a또는 b인지 검사할떄 사용
+  - 정규 표현 메서드
+    - test() : 지정된 규칙에 맞는 단어가 있으면 true 값을 반환
+    - exec() : 지정된 규칙에 맞는 단어가 있으면 해당 단어를 반환
+
+<br/>
+
+## 브라우저 객체 모델(BOM, Browser Object Model)
+- 브라우저 객체 : 브라우저에 내장된 객체, window는 브라우저 객체의 최상위 객체
+- 계층구조
+  - window
+    - document
+      - body, div, img, a, form, input ... 등
+    - screen
+    - location
+    - history
+    - navigator
+- ### window 객체 메서드 종류
+  - open() : 새창을 열 때 사용
+    - window.open("url경로", "name", "specs")
+    - name
+      - _blank : 새 윈도우 창(기본)
+      - _parent : 부모 프레임에서 로드
+      - _self : 현재 위치에서 이동
+    - specs
+      - width : 창의 너비를 설정
+      - height : 창의 높이를 설정
+      - left : 창의 좌.우 수평위치를 설정
+      - top : 창의 상.하 수직위치를 설정
+      - location : 창의 url 주소 입력 노출 여부를 결정(숨김 = no, 노출 = yes) opera만 적용
+      - status : 창의 상태 영역 노출 여부를 결정(숨김=no, 노출=yes)
+      - scrollbars: 창의 스크롤 막대 노출 여부를 결정(no, yes)
+      - toolbar: 창의 도구상자 노출여부를 결정(no, yes)
+  - alert() : 경고 창을 띄움
+    - alert("경고 메시지");
+  - prompt() : 질의응답 창을 띄움
+    - prompt("질의 내용", "기본 답변");
+  - confirm() : 확인/취소 창을 띄움
+    - confirm("질의 내용");
+  - moveTo() : 창의 위치를 이동시킬 때 사용
+브라우저 창의 위치를 이동시킬 때 사용(크롬, 오페라에서는 정상적으로 작동 x )
+  - resizeTo(): 창의 크기를 변경시킬 때 사용(크롬, 오페라에서는 작동 x)
+  - setInterval() : 일정 간격으로 지속적으로 실행문을 실행시킬 때 사용
+    - var 참조변수 = setInterval("스크립트 실행문", 시간 간격);
+    - clearInterval(참조변수) : 반복되서 실행되는 것을 취소
+  - setTimeout() : 일정 간격으로 한 번만 실행문을 실행시킬 때 사용
+    - 한 번만 실행하지만 재귀 함수 호출을 사용하면 setInterval() 메서드처럼 사용할 수 있다.
+    - var 참조변수 = setTimeout("스크립트 실행문", 시간 간격)
+- ### screen 객체
+  - 사용자의 모니터 정보(속성)을 제공하는 객체
+  - 기본형 > screen.속성;
+  - screen 객체의 속성 종류
+    - screen.width : 화면의 너비값 반환
+    - screen.height : 화면의 높이값 반환
+    - screen.availWidth : 작업 표시줄을 제외한 화면의 너비값 반환
+    - screen.availHeight : 작업 표시줄을 제외한 화면의 높이값 반환
+    - screen.colorDepth : 사용자 모니터가 표현 가능한 컬러 bit를 반환
+- ### location 객체
+  - 사용자 브라우저의 주소 창에 url에 대한 정보(속성)와 새로 고침 기능(메서드)을 제공하는 객체
+  - 기본형 > location.속성; 또는 location.메서드();
+  - location 객체 속성 / 메서드 종류
+    - location.href : 주소 영역에 참조 주소를 설정하거나 URL을 반환
+    - location.hash : URL에 해시값(#에 명시된 값)을 반환
+    - location.hostname : URL에 호스트 이름을 설정하거나 반환
+    - location.host : URL에 호스트 이름과 포트 번호를 반환
+    - location.port : URL에 포트 번호를 반환
+    - location.protocol : URL에 프로토콜을 반환
+    - location.search : URL에 쿼리(요청 값)을 반환
+    - location.reload() : 새로고침
+- ### history 객체
+  - 기본형 > history.메서드; 또는 history.속성;
+  - history 메서드/속성 종류
+    - history.back() : 이전 방문한 페이지로 이동
+    - history.forward() : 다음 방문한 페이지로 이동
+    - history.go(이동 숫자) : 이동 숫자가 -2이면 2단계 이전 페이지로 이동
+    - length : 방문 기록에 저장된 목록의 개수를 반환
+- ### navigator 객체
+  - 현재 방문자가 사용하는 브라우저의 정보와 운영체제의 정보를 제공하는 객체
+  - 기본형 > navigator.속성;
+  - navigator 속성
+    - navigator.appCodeName : 방문자의 브라우저 코드명을 반환
+    - navigator.appName : 방문자의 브라우저 이름을 반환
+    - navigator.appVersion : 방문자의 브라우저 버전 정보를 반환
+    - navigator.language : 방문자의 브라우저 사용 언어를 반환
+    - navigator.product : 방문자의 브라우저 사용 엔진 이름을 반환
+    - navigator.platform : 방문자의 브라우저를 실행하는 운영체제를 반환
+    - navigator.userAgent : 방문자의 브라우저와 운영체제 종합정보를 제공
